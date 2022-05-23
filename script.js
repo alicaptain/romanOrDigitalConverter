@@ -6,6 +6,9 @@
 // ERRORS //
 const errors = (note) => {
 	console.log(`ERROR: ${note}`);
+
+	output.textContent = `ERROR: ${note}`;
+	output.style.color = 'var(--col-text)';
 }
 
 
@@ -162,9 +165,11 @@ function digitalToRoman(userValue) {
 		};
 
 		switch (hundreds) {
-			case (9): romanResult += 'CM'; break;
-			case (7 | 6 | 5): romanResult +='ORABIRIL'; break;
-			
+			case (9): romanResult +='CM'; break;
+			case (8): romanResult +='DCCC'; break;
+			case (7): romanResult +='DCC'; break;
+			case (6): romanResult +='DC'; break;
+			case (5): romanResult +='D'; break;
 			case (4): romanResult +='CD'; break;
 			case (3): romanResult +='CCC'; break;
 			case (2): romanResult +='CC'; break;
