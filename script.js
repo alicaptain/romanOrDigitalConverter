@@ -23,7 +23,6 @@ const romanToDigital = (userValue) => {
 		const defaultRomanFigures = 'IVXLCDM';
 		for(let i = 0; i < len; i++) {
 			if (!defaultRomanFigures.includes(inputRoman[i])) {
-				errors(`Looks like there is an invalid figure: ${inputRoman[i]}`);
 				return false;
 			};
 		}; 	return true; 
@@ -33,7 +32,7 @@ const romanToDigital = (userValue) => {
 	const romanRulesInspector = (userValue) => {
 		for (let i = 0; i < len; i++) {
 			if (userValue[i] == 'V' && userValue[i + 1] == 'V') {
-				errors(`Figure 'V' can't be used twice in Roman Numbers.`); return false;
+				return (false, errors(`Figure 'V' can't be used twice in Roman Numbers.`));
 			} else if (userValue[i] == 'L' && userValue[i + 1] == 'L') {
 				errors(`Figure 'L' can't be used twice in Roman Numbers.`); return false;
 			} else if (userValue[i] == 'D' && userValue[i + 1] == 'D') {
@@ -129,8 +128,9 @@ const romanToDigital = (userValue) => {
 	// Roman Filters Manager (filters thru converter)
 	const filterManager = (checkuserValue) => {
 		console.log(checkRomanInput(userValue));
-		checkRomanInput(userValue) && romanRulesInspector(userValue) ? convertionManager(userValue) : errors(`There is something wrong.`);
-	};
+		(checkRomanInput(userValue)) ? romanRulesInspector(userValue) : errors(`Looks like there is an invalid figure: ${inputRoman[i]}`);
+		(romanRulesInspector(userValue)) ? convertionManager(userValue) : false;
+		};
 		
 	filterManager(userValue);
 
@@ -229,7 +229,7 @@ function inputChecker() {
    const userValue = document.getElementById('user-input').value;
    // checkRomanInput(userValue); /* Sending to the Figure Filter */
 
-	(userValue == 0) ? console.log('OUT: The 0 is not invented yet my luv...') : (Number(userValue)) ? digitalToRoman(userValue) : romanToDigital(userValue);
+	(userValue == 0) ? errors(`The "0" has not invented yet my luv...`) : (Number(userValue)) ? digitalToRoman(userValue) : romanToDigital(userValue);
 };
 
 // feedback

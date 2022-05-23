@@ -46,7 +46,7 @@ h2 {
 
 .outputSection {
    max-width: 90%;
-   word-break: break-all;
+   word-break: normal;
 }
 
 #convertion-form {
