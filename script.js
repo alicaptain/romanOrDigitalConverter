@@ -23,6 +23,7 @@ const romanToDigital = (userValue) => {
 		const defaultRomanFigures = 'IVXLCDM';
 		for(let i = 0; i < len; i++) {
 			if (!defaultRomanFigures.includes(inputRoman[i])) {
+				errors(`Looks like there is an invalid figure: ${inputRoman[i]}`)
 				return false;
 			};
 		}; 	return true; 
@@ -128,8 +129,7 @@ const romanToDigital = (userValue) => {
 	// Roman Filters Manager (filters thru converter)
 	const filterManager = (checkuserValue) => {
 		console.log(checkRomanInput(userValue));
-		(checkRomanInput(userValue)) ? romanRulesInspector(userValue) : errors(`Looks like there is an invalid figure: ${inputRoman[i]}`);
-		(romanRulesInspector(userValue)) ? convertionManager(userValue) : false;
+		(checkRomanInput(userValue)) && romanRulesInspector(userValue) ? convertionManager(userValue) : false;
 		};
 		
 	filterManager(userValue);
