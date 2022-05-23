@@ -44,7 +44,12 @@ h2 {
    margin-bottom: 0.32rem;
 }
 
-#convert-form {
+.outputSection {
+   max-width: 90%;
+   word-break: break-all;
+}
+
+#convertion-form {
    width: 100%;
    display: grid;
    justify-items: center;
